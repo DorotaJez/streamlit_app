@@ -11,4 +11,4 @@ streamlit.text('Eggs')
 streamlit.text('Avocado toast')
 
 streamlit.header('Build your own fruit smoothie')
-streamlit.dataframe(my_fruits_list)
+streamlit.dataframe(my_fruit_list)
