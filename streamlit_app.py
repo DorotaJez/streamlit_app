@@ -23,13 +23,14 @@ streamlit.write('The user entered', fruit_choice)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 streamlit.text(fruityvice_response.json())
 
+fv_normalized = pd.json_normalize(fruityvice_response.json())
+streamlit.dataframe(fv_normalized)
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
+streamlit.text("hello")
 streamlit.text(my_data_row)
-
-fv_normalized = pd.json_normalize(fruityvice_response.json())
-streamlit.dataframe(fv_normalized)
 
 
